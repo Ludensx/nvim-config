@@ -1,0 +1,32 @@
+# Ignorar directorio de plugins de Lazy
+lazy-lock.json
+
+# Directorio de datos de plugins
+/plugin
+
+# Archivos de log
+*.log
+
+# Archivos de Neovim
+.luarc.json
+.stylua.toml
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Backup y swap files
+*.swp
+*.swo
+*~
+.*.sw?
+
+# Directorio de datos locales
+/data
+
+# Archivos de sesión
+Session.vim
+.session
+
+# Debugger
+.vscode/
