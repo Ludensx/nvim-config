@@ -71,13 +71,11 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
   }
 )
 
--- Opcional: agregar un poco de transparencia
  --vim.api.nvim_set_hl(0, 'NormalFloat', {
   -- bg = '#1e1e2e',
   -- blend = 80,  -- 0-100, más alto = más transparente
 -- })
 
--- Opcional: hacer el borde más visible con color diferente
  --vim.api.nvim_set_hl(0, 'FloatBorder', {
   -- fg = '#f9e2af',  -- Amarillo/dorado
   -- bg = '#1e1e2e',
@@ -85,7 +83,6 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
 
 
 -- Personalizar colores de las ventanas flotantes
--- Estas configuraciones se pueden ajustar según tu tema de colores
 vim.api.nvim_set_hl(0, 'FloatBorder', {
   fg = '#89b4fa',  -- Color del borde (azul claro)
   bg = '#1e1e2e',  -- Color de fondo del popup
@@ -104,7 +101,7 @@ vim.api.nvim_set_hl(0, 'NormalFloat', {
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { 
     "lua", "typescript", "javascript", "typescriptreact", "javascriptreact",
-    "python", "rust", "html", "css", "json", "yaml", "dockerfile", "sql"
+    "python", "rust", "html", "css", "module.css", "json", "yaml", "dockerfile", "sql"
   },
   callback = function(args)
     local ft = vim.bo[args.buf].filetype
@@ -185,7 +182,7 @@ vim.api.nvim_create_autocmd("FileType", {
         }
       }
       
-    elseif ft == "css" then
+    elseif ft == "css" or ft == "module.css" then
       server_name = "cssls"
       cmd = { "vscode-css-language-server", "--stdio" }
       settings = {
