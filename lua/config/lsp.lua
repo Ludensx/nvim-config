@@ -56,20 +56,19 @@ vim.diagnostic.config({
 -- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 -- PERSONALIZACIÓN DE VENTANAS FLOTANTES
 -- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
+vim.o.winborder = 'rounded'
 -- Configurar apariencia de las ventanas flotantes del LSP
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, {
-    border = "rounded",  -- Bordes redondeados
-    -- Puedes usar: "none", "single", "double", "rounded", "solid", "shadow"
-  }
-)
+-- vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
+  --vim.lsp.handlers.hover, {
+    --border = "rounded",  -- Bordes redondeados
+  --}
+--)
 
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-  vim.lsp.handlers.signature_help, {
-    border = "rounded",
-  }
-)
+--vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
+  --vim.lsp.handlers.signature_help, {
+    --border = "rounded",
+  --}
+--)
 
  --vim.api.nvim_set_hl(0, 'NormalFloat', {
   -- bg = '#1e1e2e',
@@ -316,7 +315,7 @@ end, {})
 vim.api.nvim_create_user_command('LspRestart', function()
   local clients = vim.lsp.get_clients({ bufnr = 0 })
   for _, client in ipairs(clients) do
-    vim.lsp.stop_client(client.id)
+    client:stop()
   end
   vim.cmd('edit')
   print("🔄 LSP reiniciado")
